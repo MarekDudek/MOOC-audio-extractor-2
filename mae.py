@@ -2,6 +2,7 @@
 
 import sys
 import os
+import subprocess
 
 
 def validate_arguments():
@@ -38,11 +39,27 @@ def process_directory(input_dir, output_dir):
             os.makedirs(output_subdir)
 
         for name in filenames:
-            print '\tInput  file "{0}"'.format(name)
-            base_path = os.path.basename(name)
-            output_file = os.path.join(output_dir, base_path)
+            input_file = os.path.join(dirpath, name)
+            print '\tInput  file "{0}"'.format(input_file)
+            relative_path = os.path.relpath(input_file, input_dir)
+            (root, ext) = os.path.splitext(relative_path)
+            output_file = os.path.join(output_dir, root + '.mp3')
             print '\tOutput file "{0}"'.format(output_file)
+            extract_audio(input_file, output_file)
 
+def extract_audio(input_file, output_file):
+    command = [ 'ffmpeg',
+                #'-loglevel', 'panic',
+                '-i', input_file,
+                '-map', '0:a',
+                '-c', 'libmp3lame',
+                '-q:a', '2',
+                '-f', 'mp3',
+                output_file
+                ]
+    print '\tCommand', ' '.join(command)
+    pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
+    sys.exit(1)
 
 if __name__ == '__main__':
 
