@@ -7,7 +7,8 @@ import subprocess
 
 def validate_arguments():
 
-    if len(sys.argv) != (2 + 1):
+    args = sys.argv[1:]
+    if len(args) != 2:
         print 'Two arguments required, input and output directories'
         sys.exit(1)
 
@@ -60,7 +61,7 @@ def extract_audio(input_file, output_file):
     print '\tStarting extraction ...',
     sys.stdout.flush()
     pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
-    print 'started ...', 
+    print 'working ...', 
     sys.stdout.flush()
     pipe.wait()
     print 'done.'
