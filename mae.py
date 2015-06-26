@@ -13,8 +13,8 @@ def validate_arguments():
     input_dir  = sys.argv[1]
     output_dir = sys.argv[2]
 
-    print 'Input  directory is "%s"' % (input_dir, )
-    print 'Output directory is "%s"' % (output_dir, )
+    print 'Input  directory is "{0}"'.format(input_dir)
+    print 'Output directory is "{0}"'.format(output_dir)
 
     if not os.path.isdir(input_dir):
         print 'Input directory does not exist and it should'
@@ -28,14 +28,17 @@ def validate_arguments():
 
 def process_directory(input_dir, output_dir):
 
-    for dirName, subdirList, fileList in os.walk(input_dir):
-        if dirName == input_dir: 
+    for dirpath, dirnames, filenames in os.walk(input_dir):
+        print 'Directory "{0}"'.format(dirpath)
+        if dirpath == input_dir: 
             os.makedirs(output_dir)
         else:
-            pass
+            base_path = os.path.basename(dirpath)
+            output_subdir = os.path.join(output_dir, base_path)
+            os.makedirs(output_subdir)
 
-        for fname in fileList:
-            pass
+        for name in filenames:
+            print '\tFile "{0}"'.format(name)
 
 if __name__ == '__main__':
 
