@@ -38,7 +38,11 @@ def process_directory(input_dir, output_dir):
             os.makedirs(output_subdir)
 
         for name in filenames:
-            print '\tFile "{0}"'.format(name)
+            print '\tInput  file "{0}"'.format(name)
+            base_path = os.path.basename(name)
+            output_file = os.path.join(output_dir, base_path)
+            print '\tOutput file "{0}"'.format(output_file)
+
 
 if __name__ == '__main__':
 
