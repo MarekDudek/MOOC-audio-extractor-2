@@ -49,7 +49,7 @@ def process_directory(input_dir, output_dir):
 
 def extract_audio(input_file, output_file):
     command = [ 'ffmpeg',
-                #'-loglevel', 'panic',
+                '-loglevel', 'panic',
                 '-i', input_file,
                 '-map', '0:a',
                 '-c', 'libmp3lame',
@@ -57,9 +57,14 @@ def extract_audio(input_file, output_file):
                 '-f', 'mp3',
                 output_file
                 ]
-    print '\tCommand', ' '.join(command)
+    print '\tStarting extraction ...',
+    sys.stdout.flush()
     pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
-    sys.exit(1)
+    print 'started ...', 
+    sys.stdout.flush()
+    pipe.wait()
+    print 'done.'
+    sys.stdout.flush()
 
 if __name__ == '__main__':
 
