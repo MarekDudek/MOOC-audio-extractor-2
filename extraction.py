@@ -11,12 +11,15 @@ def extract_audio(input_file, output_file):
                 '-f', 'mp3',
                 output_file
                 ]
-    __print_and_flush('\tStarting extraction ...')
+    _print_single_line('\tStarting extraction ...')
     pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
-    __print_and_flush('working ...') 
+    _print_single_line('working ...') 
     pipe.wait()
-    print 'done.'
+    _print_single_line('done.', done=True)
 
-def __print_and_flush(message) :
+def _print_single_line(message, done=False) :
+    if done:
+        print message
+        return
     print message,
     sys.stdout.flush()
