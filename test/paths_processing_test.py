@@ -96,7 +96,7 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
 
-    def itest_output_file_path2(self):
+    def test_output_file_path2(self):
         # given
         input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
         output_dir = '/home/marek/Devel/varia/emb3'
@@ -105,7 +105,7 @@ class PathsProcessing(unittest.TestCase):
         # when
         output_file = output_file_path2(input_dir, output_dir, dirpath, name)
         # then
-        self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
+        self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets/01 FT-  Asymmetric Credit Growth in Europe.mp3')
 
     def test_relative_path(self):
         # given

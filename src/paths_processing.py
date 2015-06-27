@@ -97,5 +97,6 @@ def extract_from_lecture_part(name):
 def output_file_path2(input_dir, output_dir, dirpath, name):
     lecture_input_subdir = os.path.relpath(dirpath, input_dir)
     sortable_name = lecture_sortable_name(lecture_input_subdir)
-
-    return os.path.join(output_dir, sortable_name)
+    _, _, _, part_order, part_title, _, _, _ = extract_from_lecture_part(name)
+    file_name = '{:0>2d} {:s}.mp3'.format(part_order, part_title)
+    return os.path.join(output_dir, sortable_name, file_name)
