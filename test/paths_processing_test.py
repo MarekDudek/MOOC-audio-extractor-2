@@ -66,10 +66,11 @@ class PathsProcessing(unittest.TestCase):
         ]
 
         # when
-        orders_and_titles = map(extract_lecture_order_and_title, lectures)
+        extracted = map(extract_lecture_order_and_title, lectures)
+        properly_extracted = filter(lambda info: info != None, extracted)
 
         # then
-        self.assertEquals(len(orders_and_titles), len(lectures))
+        self.assertEquals(len(properly_extracted), len(lectures))
     
 
 
@@ -130,7 +131,6 @@ class PathsProcessing(unittest.TestCase):
         self.assertEquals(seconds, 20)
         self.assertEquals(extension, 'mp4')
 
-
     def test_extracting_from_file_names(self):
         # given
         names = [
@@ -149,8 +149,9 @@ class PathsProcessing(unittest.TestCase):
         ]
         # when
         extracted = map(extract_from_lecture_part, names)
+        properly_extracted = filter(lambda info: info != None, extracted)
         # then
-        self.assertEquals(len(extracted), len(names))
+        self.assertEquals(len(properly_extracted), len(names))
 
 if __name__ == '__main__':
     unittest.main()
