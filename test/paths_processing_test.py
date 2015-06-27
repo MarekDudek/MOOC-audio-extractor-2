@@ -115,5 +115,31 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(lecture_input_subdir, 'Lec 10: Dealers and Liquid Security Markets')
 
+    def test_extracting_from_file_name(self):
+        # given
+        name = '1 - 2 - 3-4 The Big Picture (19-20).mp4'
+        # when
+        technical_lecture_order, technical_part_order, lecture_order, part_order, part_title = extract_from_lecture_part(name)
+        # then
+        self.assertEquals(technical_lecture_order, 1)
+        self.assertEquals(technical_part_order, 2)
+        self.assertEquals(lecture_order, 3)
+        self.assertEquals(part_order, 4)
+        self.assertEquals(part_title, 'The Big Picture')
+
+
+    def test_extracting_from_file_names(self):
+        # given
+        names = [
+                '2 - 1 - 1-1 The Big Picture (19-20).mp4',
+                '2 - 2 - 1-2 Prerequisites- (7-21).mp4',
+                '2 - 3 - 1-3 What is a Bank, a Shadow Bank, a Central Bank- (12-10).mp4',
+                '2 - 4 - 1-4 Central Themes (13-07).mp4',
+                '2 - 5 - 1-5 Reading-  Allyn Young (3-10).mp4'
+        ]
+        # when
+
+        # then
+
 if __name__ == '__main__':
     unittest.main()

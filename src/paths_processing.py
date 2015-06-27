@@ -45,6 +45,18 @@ def output_file_path(input_dir, output_dir, dirpath, name):
     (root, ext) = os.path.splitext(relative_path)
     return os.path.join(output_dir, root + '.mp3')
 
+LECTURE_PART_INPUT_FILE = re.compile(r'^(\d+) - (\d+) - (\d+)-(\d+) (.*?) *\((\d+)-(\d+)\).(mp4)$')
+
+def extract_from_lecture_part(name):
+    match = LECTURE_PART_INPUT_FILE.match(name)
+    if match:
+        technical_lecture_order = match.group(1)
+        technical_part_order    = match.group(2)
+        lecture_order           = match.group(3)
+        part_order              = match.group(4)
+        part_title              = match.group(5)
+        return int(technical_lecture_order), int(technical_part_order), int(lecture_order), int(part_order), part_title
+
 def output_file_path2(input_dir, output_dir, dirpath, name):
     lecture_input_subdir = os.path.relpath(dirpath, input_dir)
     sortable_name = lecture_sortable_name(lecture_input_subdir)
