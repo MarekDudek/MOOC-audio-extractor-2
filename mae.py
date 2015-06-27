@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.append('.')
+sys.path.append('src')
 from arguments  import *
 from hierarchy_processing import *
 
