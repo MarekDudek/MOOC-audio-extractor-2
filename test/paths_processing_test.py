@@ -23,21 +23,21 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(lecture_input_subdir, 'Lec 10: Dealers and Liquid Security Markets')
     
-    def itest_lecture_friendly_name_two_digits(self):
+    def test_lecture_friendly_name_two_digits(self):
         # given
         lecture_input_subdir = 'Lec 10: Dealers and Liquid Security Markets'
         # when
-        friendly_name = lecture_sortable_name(lecture_input_subdir)
+        name = lecture_sortable_name(lecture_input_subdir)
         # then
-        self.assertEquals(friendly_name, '10 Dealers and Liquid Security Markets')
+        self.assertEquals(name, '10 Dealers and Liquid Security Markets')
 
-    def itest_lecture_friendly_name_one_digits(self):
+    def test_lecture_friendly_name_one_digits(self):
         # given
         lecture_input_subdir = 'Lec 3: Money and the State: Domestic'
         # when
-        friendly_name = lecture_sortable_name(lecture_input_subdir)
+        name = lecture_sortable_name(lecture_input_subdir)
         # then
-        self.assertEquals(friendly_name, '03 Money and the State: Domestic')
+        self.assertEquals(name, '03 Money and the State: Domestic')
 
     def test_lecture_title(self):
         # given

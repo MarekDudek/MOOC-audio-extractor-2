@@ -7,14 +7,15 @@ def lecture_subdirectory(dirpath, output_dir):
 
 def lecture_subdirectory2(dirpath, output_dir):
     subdir = lecture_input_subdirectory(dirpath)
-    friendly_name = lecture_sortable_name(subdir)
+    sortable_name = lecture_sortable_name(subdir)
     pass
 
 def lecture_input_subdirectory(dirpath):
     return os.path.basename(dirpath)
 
 def lecture_sortable_name(lecture_input_subdir):
-    pass
+    order, title = extract_lecture_order_and_title(lecture_input_subdir)
+    return '{:0>2d} {:s}'.format(order, title)
 
 
 import re
