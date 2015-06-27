@@ -11,8 +11,8 @@ def process_directory(input_dir, output_dir):
         if dirpath == input_dir: 
             os.makedirs(output_dir)
         else:
-            output_subdir = subdirectory_under_output_directory(dirpath, output_dir)
-            os.makedirs(output_subdir)
+            lecture = lecture_subdirectory(dirpath, output_dir)
+            os.makedirs(lecture)
 
         for name in filenames:
             input_file = input_file_path(dirpath, name)

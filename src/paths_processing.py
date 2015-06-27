@@ -1,6 +1,6 @@
 import os
 
-def subdirectory_under_output_directory(dirpath, output_dir):
+def lecture_subdirectory(dirpath, output_dir):
     base_name = os.path.basename(dirpath)
     subdirectory = os.path.join(output_dir, base_name)
     return subdirectory
