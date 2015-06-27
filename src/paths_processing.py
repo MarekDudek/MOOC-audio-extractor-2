@@ -46,6 +46,30 @@ def output_file_path(input_dir, output_dir, dirpath, name):
     return os.path.join(output_dir, root + '.mp3')
 
 LECTURE_PART_INPUT_FILE = re.compile(r'^(\d+) - (\d+) - (\d+)-(\d+) (.*?) *\((\d+)-(\d+)\).(mp4)$')
+LECTURE_PART_INPUT_FILE = re.compile(
+    r"""^           #   match from the beginning
+        (\d+)       # Technical lecture order (group)
+        \           #     space(s)
+        -           #   hyphen
+        \           #     space(s)
+        (\d+)       # Technical part order (group)
+        \           #     space(s)
+        -           #   hyphen
+        \           #     space(s)
+        (\d+)       # Lecture order (group)
+        -           #   hyphen
+        (\d+)       # Part order (group)
+        \           #     space(s)
+        (.*?)
+        \ *
+        \(
+        (\d+)
+        -
+        (\d+)
+        \)
+        .
+        (mp4)
+        $""", re.VERBOSE)
 
 def extract_from_lecture_part(name):
     match = LECTURE_PART_INPUT_FILE.match(name)
