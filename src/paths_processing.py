@@ -45,31 +45,41 @@ def output_file_path(input_dir, output_dir, dirpath, name):
     (root, ext) = os.path.splitext(relative_path)
     return os.path.join(output_dir, root + '.mp3')
 
-LECTURE_PART_INPUT_FILE = re.compile(r'^(\d+) - (\d+) - (\d+)-(\d+) (.*?) *\((\d+)-(\d+)\).(mp4)$')
 LECTURE_PART_INPUT_FILE = re.compile(
     r"""^           #   match from the beginning
+        \ *         #     space(s)
         (\d+)       # Technical lecture order (group)
-        \           #     space(s)
+        \ *         #     space(s)
         -           #   hyphen
-        \           #     space(s)
+        \ *         #     space(s)
         (\d+)       # Technical part order (group)
-        \           #     space(s)
+        \ *         #     space(s)
         -           #   hyphen
-        \           #     space(s)
+        \ *         #     space(s)
         (\d+)       # Lecture order (group)
+        \ *         #     space(s)
         -           #   hyphen
+        \ *         #     space(s)
         (\d+)       # Part order (group)
         \           #     space(s)
-        (.*?)
-        \ *
-        \(
-        (\d+)
-        -
-        (\d+)
-        \)
-        .
-        (mp4)
-        $""", re.VERBOSE)
+        (.*?)       # Part title (group)
+        \ *         #     space(s)
+        \(          # Opening parentesis
+        \ *         #     space(s)
+        (\d+)       # Minutes (group)
+        \ *         #     space(s)
+        -           #   hyphen
+        \ *         #     space(s)
+        (\d+)       # Seconds (group)
+        \ *         #     space(s)
+        \)          # Closing parentesis
+        \ *         #     space(s)
+        \.          # Dot
+        \ *         #     space(s)
+        (\w+)       # Extension (group)
+        \ *         #     space(s)
+        $           #   match till the end
+        """, re.VERBOSE)
 
 def extract_from_lecture_part(name):
     match = LECTURE_PART_INPUT_FILE.match(name)

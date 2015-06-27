@@ -138,12 +138,19 @@ class PathsProcessing(unittest.TestCase):
                 '2 - 2 - 1-2 Prerequisites- (7-21).mp4',
                 '2 - 3 - 1-3 What is a Bank, a Shadow Bank, a Central Bank- (12-10).mp4',
                 '2 - 4 - 1-4 Central Themes (13-07).mp4',
-                '2 - 5 - 1-5 Reading-  Allyn Young (3-10).mp4'
+                '2 - 5 - 1-5 Reading-  Allyn Young (3-10).mp4',
+                '3 - 1 - 2-1 FT-  The Eurocrisis,  Liquidity vs. Solvency (10-06).mp4',
+                '3 - 2 - 2-2 Hierarchy of Financial Instruments (9-39).mp4',
+                '3 - 3 - 2-3 Hierarchy of Financial Institutions (6-37).mp4',
+                '3 - 4 - 2-4 Dynamics of the Hierarchy (6-08).mp4',
+                '3 - 5 - 2-5 Discipline and Elasticity, Currency Principle and Banking Principle (8-49).mp4',
+                '3 - 6 - 2-6 Hierarchy of Market Makers (9-16).mp4',
+                '3 - 7 - 2-7 Managing the Hierarchy (18-03).mp4'
         ]
         # when
-        tuples = map(extract_from_lecture_part, names)
+        extracted = map(extract_from_lecture_part, names)
         # then
-        self.assertEquals(len(tuples), len(names))
+        self.assertEquals(len(extracted), len(names))
 
 if __name__ == '__main__':
     unittest.main()
