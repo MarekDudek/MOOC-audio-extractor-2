@@ -2,8 +2,9 @@
 
 import sys
 import os
-import subprocess
 
+sys.path.append('.')
+from extraction import *
 
 def validate_arguments():
 
@@ -47,25 +48,6 @@ def process_directory(input_dir, output_dir):
             output_file = os.path.join(output_dir, root + '.mp3')
             print '\tOutput file "{0}"'.format(output_file)
             extract_audio(input_file, output_file)
-
-def extract_audio(input_file, output_file):
-    command = [ 'ffmpeg',
-                '-loglevel', 'panic',
-                '-i', input_file,
-                '-map', '0:a',
-                '-c', 'libmp3lame',
-                '-q:a', '2',
-                '-f', 'mp3',
-                output_file
-                ]
-    print '\tStarting extraction ...',
-    sys.stdout.flush()
-    pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
-    print 'working ...', 
-    sys.stdout.flush()
-    pipe.wait()
-    print 'done.'
-    sys.stdout.flush()
 
 if __name__ == '__main__':
 
