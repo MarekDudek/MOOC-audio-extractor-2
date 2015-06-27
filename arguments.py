@@ -5,8 +5,7 @@ def validate_arguments(args, on_fail):
     if len(args) != 2:
         on_fail('Two arguments required, input and output directories')
 
-    input_dir  = args[0]
-    output_dir = args[1]
+    input_dir, output_dir = args
 
     print 'Input  directory is "{0}"'.format(input_dir)
     print 'Output directory is "{0}"'.format(output_dir)
