@@ -1,4 +1,5 @@
 import os
+import re
 
 def lecture_subdirectory(dirpath, output_dir):
     subdir = lecture_input_subdirectory(dirpath)
@@ -12,7 +13,6 @@ def lecture_sortable_name(lecture_input_subdir):
     order, title = extract_lecture_order_and_title(lecture_input_subdir)
     return '{:0>2d} {:s}'.format(order, title)
 
-import re
 LECTURE_INPUT_SUBDIRECTORY = re.compile(r'^ *\w+ *(\d+) *: *(.+?) *$')
 
 def extract_lecture_order_and_title(lecture_input_subdir):
@@ -84,4 +84,8 @@ def output_file_path(input_dir, output_dir, dirpath, name):
     _, _, _, part_order, part_title, _, _, _ = extract_from_lecture_part(name)
     file_name = '{:0>2d} {:s}.mp3'.format(part_order, part_title)
     return os.path.join(output_dir, sortable_name, file_name)
+
+
+def extract_course_title(input_dir):
+    return os.path.basename(input_dir)
 

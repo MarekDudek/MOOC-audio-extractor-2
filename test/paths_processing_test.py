@@ -133,5 +133,14 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(len(properly_extracted), len(names))
 
+
+    def test_extracting_course_title(self):
+        # given
+        input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
+        # when
+        course_title = extract_course_title(input_dir)
+        # then
+        self.assertEquals(course_title, 'Economics of Money and Banking, Part One')
+
 if __name__ == '__main__':
     unittest.main()

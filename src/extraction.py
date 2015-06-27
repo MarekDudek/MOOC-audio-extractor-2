@@ -1,6 +1,10 @@
 import sys
 import subprocess
 
+import sys
+sys.path.append('.')
+from external_tools import *
+
 def extract_audio(input_file, output_file):
     command = [ 'ffmpeg',
                 '-loglevel', 'panic',
@@ -11,15 +15,9 @@ def extract_audio(input_file, output_file):
                 '-f', 'mp3',
                 output_file
                 ]
-    _print_single_line('\tStarting extraction ...')
+    print_single_line('\tStarting extraction ...')
     pipe = subprocess.Popen(command, stdout=subprocess.PIPE, bufsize=10**8)
-    _print_single_line('working ...') 
+    print_single_line('working ...') 
     pipe.wait()
-    _print_single_line('done.', done=True)
+    print_single_line('done.', done=True)
 
-def _print_single_line(message, done=False) :
-    if not done:
-        print message,
-        sys.stdout.flush()
-    else:
-        print message

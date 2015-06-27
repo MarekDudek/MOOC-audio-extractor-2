@@ -1,6 +1,6 @@
 import os
 
-def validate_arguments(args, on_fail):
+def validate_arguments(args, on_fail, skip_extraction):
 
     if len(args) != 2:
         on_fail('Two arguments required, input and output directories')
@@ -14,6 +14,7 @@ def validate_arguments(args, on_fail):
         on_fail('Input directory does not exist and it should')
 
     if os.path.isdir(output_dir):
-        on_fail('Output directory exists and it should not')
+        if not skip_extraction:
+            on_fail('Output directory exists and it should not')
 
     return input_dir, output_dir
