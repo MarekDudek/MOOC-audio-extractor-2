@@ -78,13 +78,16 @@ def extract_from_lecture_part(name):
         extension               = match.group(8)
         return int(technical_lecture_order), int(technical_part_order), int(lecture_order), int(part_order), part_title, int(minutes), int(seconds), extension
 
+def lecture_part_sortable_name(name):
+    _, _, _, part_order, part_title, _, _, _ = extract_from_lecture_part(name)
+    return '{:0>2d} {:s}'.format(part_order, part_title)
+
 def output_file_path(input_dir, output_dir, dirpath, name):
     lecture_input_subdir = os.path.relpath(dirpath, input_dir)
-    sortable_name = lecture_sortable_name(lecture_input_subdir)
-    _, _, _, part_order, part_title, _, _, _ = extract_from_lecture_part(name)
-    file_name = '{:0>2d} {:s}.mp3'.format(part_order, part_title)
-    return os.path.join(output_dir, sortable_name, file_name)
-
+    lecture_name = lecture_sortable_name(lecture_input_subdir)
+    lecture_part_name = lecture_part_sortable_name(name)
+    file_name = '{:s}.mp3'.format(lecture_part_name)
+    return os.path.join(output_dir, lecture_name, lecture_part_name)
 
 def extract_course_title(input_dir):
     return os.path.basename(input_dir)

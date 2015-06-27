@@ -9,7 +9,7 @@ from hierarchy_processing import *
 if __name__ == '__main__':
 
     print 'MOOC audio extractor'
-    skip_extraction=True
+    skip_extraction=False
 
     arguments = sys.argv[1:]
     on_fail   = sys.exit
