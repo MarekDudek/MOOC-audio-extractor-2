@@ -8,7 +8,7 @@ def lecture_subdirectory(dirpath, output_dir):
 def lecture_subdirectory2(dirpath, output_dir):
     subdir = lecture_input_subdirectory(dirpath)
     sortable_name = lecture_sortable_name(subdir)
-    pass
+    return os.path.join(output_dir, sortable_name)
 
 def lecture_input_subdirectory(dirpath):
     return os.path.basename(dirpath)

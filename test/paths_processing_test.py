@@ -15,6 +15,15 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(subdirectory_path, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets')
 
+    def test_lecture_directory2(self):
+        # given
+        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
+        output_dir = '/home/marek/Devel/varia/emb3'
+        # when
+        subdirectory_path = lecture_subdirectory2(dirpath, output_dir)
+        # then
+        self.assertEquals(subdirectory_path, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets')
+
     def test_finding_lecture_input_subdirectory(self):
         # given
         dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
