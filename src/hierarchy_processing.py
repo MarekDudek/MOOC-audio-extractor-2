@@ -17,6 +17,6 @@ def process_directory(input_dir, output_dir):
         for name in filenames:
             input_file = rebuild_input_file_path(dirpath, name)
             print '\tInput  file "{0}"'.format(input_file)
-            output_file = output_file_path(input_dir, output_dir, name, dirpath)
+            output_file = output_file_path(input_dir, output_dir, dirpath, name)
             print '\tOutput file "{0}"'.format(output_file)
             extract_audio(input_file, output_file)

@@ -24,5 +24,16 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(input_file, '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4')
 
+    def test_output_file_path(self):
+        # given
+        input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
+        output_dir = '/home/marek/Devel/varia/emb3'
+        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
+        name       = '11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4'
+        # when
+        output_file = output_file_path(input_dir, output_dir, dirpath, name)
+        # then
+        self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
+
 if __name__ == '__main__':
     unittest.main()
