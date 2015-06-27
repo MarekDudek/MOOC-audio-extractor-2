@@ -13,15 +13,6 @@ class PathsProcessing(unittest.TestCase):
         # when
         subdirectory_path = lecture_subdirectory(dirpath, output_dir)
         # then
-        self.assertEquals(subdirectory_path, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets')
-
-    def test_lecture_directory2(self):
-        # given
-        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
-        output_dir = '/home/marek/Devel/varia/emb3'
-        # when
-        subdirectory_path = lecture_subdirectory2(dirpath, output_dir)
-        # then
         self.assertEquals(subdirectory_path, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets')
 
     def test_finding_lecture_input_subdirectory(self):
@@ -93,17 +84,6 @@ class PathsProcessing(unittest.TestCase):
         name       = '11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4'
         # when
         output_file = output_file_path(input_dir, output_dir, dirpath, name)
-        # then
-        self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
-
-    def test_output_file_path2(self):
-        # given
-        input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
-        output_dir = '/home/marek/Devel/varia/emb3'
-        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
-        name       = '11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4'
-        # when
-        output_file = output_file_path2(input_dir, output_dir, dirpath, name)
         # then
         self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets/01 FT-  Asymmetric Credit Growth in Europe.mp3')
 
