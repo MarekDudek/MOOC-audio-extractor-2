@@ -84,9 +84,9 @@ def lecture_part_sortable_name(name):
 
 def output_file_path(input_dir, output_dir, dirpath, name):
     lecture_input_subdir = os.path.relpath(dirpath, input_dir)
-    lecture_name = lecture_sortable_name(lecture_input_subdir)
-    lecture_part_name = lecture_part_sortable_name(name)
-    file_name = '{:s}.mp3'.format(lecture_part_name)
+    lecture_name         = lecture_sortable_name(lecture_input_subdir)
+    lecture_part_name    = lecture_part_sortable_name(name)
+    file_name            = '{0}.mp3'.format(lecture_part_name)
     return os.path.join(output_dir, lecture_name, file_name)
 
 def extract_course_title(input_dir):
