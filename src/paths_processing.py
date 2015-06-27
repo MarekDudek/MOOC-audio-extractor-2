@@ -55,7 +55,10 @@ def extract_from_lecture_part(name):
         lecture_order           = match.group(3)
         part_order              = match.group(4)
         part_title              = match.group(5)
-        return int(technical_lecture_order), int(technical_part_order), int(lecture_order), int(part_order), part_title
+        minutes                 = match.group(6)
+        seconds                 = match.group(7)
+        extension               = match.group(8)
+        return int(technical_lecture_order), int(technical_part_order), int(lecture_order), int(part_order), part_title, int(minutes), int(seconds), extension
 
 def output_file_path2(input_dir, output_dir, dirpath, name):
     lecture_input_subdir = os.path.relpath(dirpath, input_dir)

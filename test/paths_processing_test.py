@@ -119,13 +119,16 @@ class PathsProcessing(unittest.TestCase):
         # given
         name = '1 - 2 - 3-4 The Big Picture (19-20).mp4'
         # when
-        technical_lecture_order, technical_part_order, lecture_order, part_order, part_title = extract_from_lecture_part(name)
+        technical_lecture_order, technical_part_order, lecture_order, part_order, part_title, minutes, seconds, extension = extract_from_lecture_part(name)
         # then
         self.assertEquals(technical_lecture_order, 1)
         self.assertEquals(technical_part_order, 2)
         self.assertEquals(lecture_order, 3)
         self.assertEquals(part_order, 4)
         self.assertEquals(part_title, 'The Big Picture')
+        self.assertEquals(minutes, 19)
+        self.assertEquals(seconds, 20)
+        self.assertEquals(extension, 'mp4')
 
 
     def test_extracting_from_file_names(self):
@@ -138,8 +141,9 @@ class PathsProcessing(unittest.TestCase):
                 '2 - 5 - 1-5 Reading-  Allyn Young (3-10).mp4'
         ]
         # when
-
+        tuples = map(extract_from_lecture_part, names)
         # then
+        self.assertEquals(len(tuples), len(names))
 
 if __name__ == '__main__':
     unittest.main()
