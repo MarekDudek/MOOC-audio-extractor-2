@@ -18,8 +18,8 @@ def extract_audio(input_file, output_file):
     _print_single_line('done.', done=True)
 
 def _print_single_line(message, done=False) :
-    if done:
+    if not done:
+        print message,
+        sys.stdout.flush()
+    else:
         print message
-        return
-    print message,
-    sys.stdout.flush()
