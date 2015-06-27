@@ -72,6 +72,7 @@ class PathsProcessing(unittest.TestCase):
         self.assertEquals(len(orders_and_titles), len(lectures))
     
 
+
     def test_rebuild_input_file_path(self):
         # given
         dirpath = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
@@ -80,6 +81,8 @@ class PathsProcessing(unittest.TestCase):
         input_file = rebuild_input_file_path(dirpath, name)
         # then
         self.assertEquals(input_file, '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4')
+
+
 
     def test_output_file_path(self):
         # given
@@ -92,6 +95,25 @@ class PathsProcessing(unittest.TestCase):
         # then
         self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/Lec 10: Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
 
+    def itest_output_file_path2(self):
+        # given
+        input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
+        output_dir = '/home/marek/Devel/varia/emb3'
+        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
+        name       = '11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp4'
+        # when
+        output_file = output_file_path2(input_dir, output_dir, dirpath, name)
+        # then
+        self.assertEquals(output_file, '/home/marek/Devel/varia/emb3/10 Dealers and Liquid Security Markets/11 - 1 - 10-1 FT-  Asymmetric Credit Growth in Europe (6-35).mp3')
+
+    def test_relative_path(self):
+        # given
+        input_dir  = '/home/marek/Education/finance/Economics of Money and Banking, Part One'
+        dirpath    = '/home/marek/Education/finance/Economics of Money and Banking, Part One/Lec 10: Dealers and Liquid Security Markets'
+        # when
+        lecture_input_subdir = os.path.relpath(dirpath, input_dir)
+        # then
+        self.assertEquals(lecture_input_subdir, 'Lec 10: Dealers and Liquid Security Markets')
 
 if __name__ == '__main__':
     unittest.main()

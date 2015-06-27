@@ -10,8 +10,10 @@ def lecture_subdirectory2(dirpath, output_dir):
     sortable_name = lecture_sortable_name(subdir)
     return os.path.join(output_dir, sortable_name)
 
+
 def lecture_input_subdirectory(dirpath):
     return os.path.basename(dirpath)
+
 
 def lecture_sortable_name(lecture_input_subdir):
     order, title = extract_lecture_order_and_title(lecture_input_subdir)
@@ -28,15 +30,23 @@ def extract_lecture_order_and_title(lecture_input_subdir):
         title = match.group(2)
         return int(order), title
 
+
+
+
 def rebuild_input_file_path(dirpath, name):
     return os.path.join(dirpath, name)
 
 
 
-def output_file_path(input_dir, output_dir, dirpath, name) :
+
+def output_file_path(input_dir, output_dir, dirpath, name):
     input_file = rebuild_input_file_path(dirpath, name)
     relative_path = os.path.relpath(input_file, input_dir)
     (root, ext) = os.path.splitext(relative_path)
     return os.path.join(output_dir, root + '.mp3')
 
+def output_file_path2(input_dir, output_dir, dirpath, name):
+    lecture_input_subdir = os.path.relpath(dirpath, input_dir)
+    sortable_name = lecture_sortable_name(lecture_input_subdir)
 
+    return os.path.join(output_dir, sortable_name)
